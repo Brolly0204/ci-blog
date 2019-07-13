@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "10"
+install:
+  - npm install
+script:
+  - hexo g
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "Brolly0204"
+  - git config user.email "102495553@qq.com"
+  - git add .
+  - git commit -m "travis blog"
+  - git push --force "https://${TOKEN}@github.com/Brolly0204/ci-blog.git" master:gh-pages
+branches:
+  only:
+    - master
